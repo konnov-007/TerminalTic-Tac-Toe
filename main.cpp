@@ -75,6 +75,7 @@ void gameMenu(bool *isGameActiveP)
 		
 	    case '1':
 	    {
+	    	*isGameActiveP=true;
 		    break;
 	    }
 	    
