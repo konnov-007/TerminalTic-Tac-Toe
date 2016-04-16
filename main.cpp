@@ -13,12 +13,14 @@ void title()
 }
 
 
-void instruction()
+void instruction(bool *isGameActiveP)
 {
 	system("cls");
-printf("Rules:\n");
-printf("There are two players on 3x3 field. \nPlayer wins if he makes up the right combination.\n");
-printf("\nGame field:\n");	
+printf("Rules:\n\n");
+printf("There are two players on 3x3 field.\n");
+printf("Crosses go first.\n");
+printf("Player wins if he makes up the right combination.\n");
+printf("\nThis is the game field:\n");	
 int l=0;
 
 for(int i=0; i<3; i++){
@@ -29,8 +31,25 @@ for(int i=0; i<3; i++){
 	printf("|");
 	printf("\n");
 }
-	
-	
+
+printf("\nTo win you should cross numbers diagonally, vertically or horizontally.");
+printf("\n\nFor example, \"X\" player wins here:\n");
+l=0;
+for(int i=0; i<3; i++){
+	for(int j=0; j<3; j++){
+		if((i==0&&j==0)||(i==1&&j==1)||(i==2&&j==2)) printf("| X ");
+		else printf("| %c ", char(49+l));
+		l++;
+	}
+	printf("|");
+	printf("\n");
+}
+		printf("\nIf you both can't cross entire field, game is draw.");
+		
+printf("\n\nPress any key to go to main menu");
+getch();
+*isGameActiveP = true;
+
 }
 /*
 void input()
@@ -42,8 +61,11 @@ void gameField()
 	
 
 */
-void gameMenu()
+void gameMenu(bool *isGameActiveP)
 {	
+	system("cls");
+	title();
+	
 	printf("Welcome to \"Tic-Tac\" game.\n\n");
 	printf("1)Play\n2)Instruction\n3)Quit\n");
 	unsigned char inputChar = _getch();
@@ -58,12 +80,13 @@ void gameMenu()
 	    
 	    case '2':
 	    {
-		    instruction();
+		    instruction(isGameActiveP);
 		    break;
 	    }
 
 	    case '3':
 	    {
+	    	*isGameActiveP=false;
 		    break;
 	    }
 }
@@ -72,8 +95,11 @@ void gameMenu()
 
 main()
 {
-	title();
-	gameMenu();
+	bool isGameActive;
+	
+	do{
+	gameMenu(&isGameActive);
 	//gameField();
+}while(isGameActive==true);
 	return 0;	
 }
