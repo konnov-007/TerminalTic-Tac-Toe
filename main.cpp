@@ -31,9 +31,7 @@ void input(bool *isGameActiveP)
 	system("cls");
 	bool whoStart;
 	firstStepChoose(&whoStart);
-	if(whoStart==false) printf("Computer starts\n");
-	if(whoStart==true) printf("You start\n");
-	
+
 	int l=0;
 for(int i=0; i<3; i++){
 	for(int j=0; j<3; j++){
@@ -42,7 +40,12 @@ for(int i=0; i<3; i++){
 	}
 	printf("|");
 	printf("\n");
-}	
+}
+
+	if(whoStart==false) printf("\n\nComputer starts\n");
+	if(whoStart==true) printf("\n\nYou start\n");
+	
+	
 printf("\n\nPress any key to return to main menu...");
 getch();
 		*isGameActiveP=true;
