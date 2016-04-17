@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
+#include <time.h>
 char table[3][3];
 
 
@@ -15,12 +16,38 @@ void title()
 
 
 
-/*
-void input()
+void stepChoose(bool *whoStartP)
 {
-	
+	int tmp;
+	srand(time(NULL));
+	tmp=rand()%2;
+	if(tmp==0) *whoStartP=false;
+	if(tmp==1) *whoStartP=true;
 }
-*/
+
+
+void input(bool *isGameActiveP)
+{
+	system("cls");
+	bool whoStart;
+	stepChoose(&whoStart);
+	if(whoStart==false) printf("Computer starts\n");
+	if(whoStart==true) printf("You start\n");
+	
+	int l=0;
+for(int i=0; i<3; i++){
+	for(int j=0; j<3; j++){
+		printf("| %c ", char(49+l));
+		l++;
+	}
+	printf("|");
+	printf("\n");
+}	
+printf("\n\nPress any key to return to main menu...");
+getch();
+		*isGameActiveP=true;
+}
+
 
 
 
@@ -55,7 +82,7 @@ for(int i=0; i<3; i++){
 }
 		printf("\nIf you both can't cross entire field, game is draw.");
 		
-printf("\n\nPress any key to go to main menu...");
+printf("\n\nPress any key to return to main menu...");
 getch();
 *isGameActiveP = true;
 }
@@ -69,7 +96,7 @@ void about(bool *isGameActiveP)
 	printf("\nCreated by Ilya Konnov.\n");
 	printf("For more information check out my github profile: \nhttps://github.com/konnov-007");	
 	
-	printf("\n\nPress any key to go to main menu...");
+	printf("\n\nPress any key to return to main menu...");
 	getch();
 *isGameActiveP = true;	
 }
@@ -80,7 +107,6 @@ void gameMenu(bool *isGameActiveP)
 {	
 	system("cls");
 	title();
-	
 	printf("Welcome to \"Tic-Tac\" game.\n\n");
 	printf("1)Play\n2)Instruction\n3)About\n4)Quit\n");
 	unsigned char inputChar = _getch();
@@ -93,7 +119,7 @@ void gameMenu(bool *isGameActiveP)
 		
 	    case '1':
 	    {
-	    	*isGameActiveP=true;
+	    	input(isGameActiveP);
 		    break;
 	    }
 	    
