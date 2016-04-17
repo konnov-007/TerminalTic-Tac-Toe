@@ -16,7 +16,7 @@ void title()
 
 
 
-void stepChoose(bool *whoStartP)
+void firstStepChoose(bool *whoStartP)
 {
 	int tmp;
 	srand(time(NULL));
@@ -30,7 +30,7 @@ void input(bool *isGameActiveP)
 {
 	system("cls");
 	bool whoStart;
-	stepChoose(&whoStart);
+	firstStepChoose(&whoStart);
 	if(whoStart==false) printf("Computer starts\n");
 	if(whoStart==true) printf("You start\n");
 	
