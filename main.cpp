@@ -27,6 +27,7 @@ void firstStepChoose(bool *whoStartP)
 }
 
 
+
 void input(bool *isGameActiveP)
 {
 	system("cls");
@@ -93,6 +94,7 @@ getch();
 
 
 
+
 void about(bool *isGameActiveP)
 {
 	system("cls");
@@ -143,20 +145,25 @@ void gameMenu(bool *isGameActiveP)
 	    {
 	    	*isGameActiveP=false;
 		    break;
-	    }
-	   
+	    }	   
 }
+}
+
+
+
+void mainGame()
+{
+	bool isGameActive;
+	
+	do{
+	gameMenu(&isGameActive);
+}while(isGameActive==true);
 }
 
 
 
 main()
 {
-bool isGameActive;
-	
-	do{
-	gameMenu(&isGameActive);
-}while(isGameActive==true);
-
+mainGame();
 	return 0;	
 }
