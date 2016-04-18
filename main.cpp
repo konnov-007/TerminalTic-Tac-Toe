@@ -221,8 +221,11 @@ arrayOutput(rnd);
 void playerPlays(bool* whoStartP)
 {
 int select;
-if(*whoStartP==false) printf("\n\nChoose number to put X: ");
+if(*whoStartP==false) do{
+ printf("\n\nChoose number to put X: ");
  scanf("%d", &select);
+ if(select<1||select>9) printf("\n\nSelect number from 1 to 9:\n\n");
+}while(select<1||select>9);
  system("cls");
  arrayOutput(select);
 	/*for(int i=0; i<3; i++){
