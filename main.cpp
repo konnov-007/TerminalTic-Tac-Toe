@@ -1,7 +1,8 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <conio.h>
 #include <time.h>
+#include <Windows.h>
+
 char table[3][3];
 
 
@@ -30,23 +31,110 @@ void firstStepChoose(bool *whoStartP)
 
 void input(bool *isGameActiveP)
 {
+	int tmp;
 	system("cls");
 	bool whoStart;
 	firstStepChoose(&whoStart);
 
 	int l=0;
-for(int i=0; i<3; i++){
-	for(int j=0; j<3; j++){
-		printf("| %c ", char(49+l));
-		l++;
-	}
-	printf("|");
-	printf("\n");
-}
-
-	if(whoStart==false) printf("\n\nComputer starts\n");
-	if(whoStart==true) printf("\n\nYou start\n");
+	if(whoStart==false) {
+		
+	printf("\n\nComputer starts\n");
+	Sleep(1300); system("cls");
+	tmp=rand()%8;
 	
+	if(tmp==0){
+		for(int i=0; i<3; i++){
+	for(int j=0; j<3; j++){
+		if(i==0&&j==0) printf("| X ");
+		else printf("| %c ", char(49+l));
+		l++;
+	 } printf("|"); printf("\n");
+	}l=0;	
+	 }
+
+		if(tmp==1){
+		for(int i=0; i<3; i++){
+	for(int j=0; j<3; j++){
+		if(i==0&&j==1) printf("| X ");
+		else printf("| %c ", char(49+l));
+		l++;
+	}printf("|"); printf("\n"); 
+	} l=0;
+	 }
+	 
+	 	if(tmp==2){
+		for(int i=0; i<3; i++){
+	for(int j=0; j<3; j++){
+		if(i==0&&j==2) printf("| X ");
+		else printf("| %c ", char(49+l));
+		l++;
+	}printf("|"); printf("\n");
+	}l=0;
+	 }
+	 
+	 	if(tmp==3){
+		for(int i=0; i<3; i++){
+	for(int j=0; j<3; j++){
+		if(i==1&&j==0) printf("| X ");
+		else printf("| %c ", char(49+l));
+		l++;
+	}printf("|"); printf("\n"); 
+	}l=0;
+	 }
+	 
+	 	if(tmp==4){
+		for(int i=0; i<3; i++){
+	for(int j=0; j<3; j++){
+		if(i==1&&j==1) printf("| X ");
+		else printf("| %c ", char(49+l));
+		l++;
+	}printf("|"); printf("\n");
+	}l=0;
+	 }
+	 
+	 	if(tmp==5){
+		for(int i=0; i<3; i++){
+	for(int j=0; j<3; j++){
+		if(i==1&&j==2) printf("| X ");
+		else printf("| %c ", char(49+l));
+		l++;
+ }printf("|"); printf("\n");
+	}l=0;
+	 }
+	 
+	 	if(tmp==6){
+		for(int i=0; i<3; i++){
+	for(int j=0; j<3; j++){
+		if(i==2&&j==0) printf("| X ");
+		else printf("| %c ", char(49+l));
+		l++;
+	}printf("|"); printf("\n");
+	}l=0;
+	 }
+	 
+	 	if(tmp==7){
+		for(int i=0; i<3; i++){
+	for(int j=0; j<3; j++){
+		if(i==2&&j==1) printf("| X ");
+		else printf("| %c ", char(49+l));
+		l++;
+	}printf("|"); printf("\n");
+	}l=0;
+	 }
+	 
+	 	if(tmp==8){
+		for(int i=0; i<3; i++){
+	for(int j=0; j<3; j++){
+		if(i==2&&j==2) printf("| X ");
+		else printf("| %c ", char(49+l));
+		l++;
+	}printf("|"); printf("\n");
+	}l=0;
+	 }
+	 	
+	 } 
+	if(whoStart==true) printf("\n\nYou start\n");	
 	
 printf("\n\nPress any key to return to main menu...");
 getch();
