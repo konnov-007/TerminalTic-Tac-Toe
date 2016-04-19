@@ -2,9 +2,6 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <time.h>
-char table[3][3];
-
-
 
 void title()
 {
@@ -17,36 +14,59 @@ void title()
 
 
 
-void firstStepChoose(bool *whoStartP)
+/*void firstStepChoose(bool *whoStartP)
 {
 	int tmp;
 	srand(time(NULL));
 	tmp=rand()%2;
 	if(tmp==0) *whoStartP=false;
 	if(tmp==1) *whoStartP=true;
-}
+}*/
 
 
-void input(bool *isGameActiveP)
+void mainGame(bool *isGameActiveP)
 {
 	system("cls");
-	bool whoStart;
-	firstStepChoose(&whoStart);
+int i = 0;
+int player = 0;
+int go = 0;
+int row = 0; 
+int column = 0;
+int line = 0;
+int winner = 0;
+char board[3][3] = 
+    {
+        {'1','2','3'},
+        {'4','5','6'},
+        {'7','8','9'}
+    };
+char message1[]="\nPlease enter the number of the square where you want to place your";
+char message2[]="\nComputer's step";
 
-	int l=0;
-for(int i=0; i<3; i++){
-	for(int j=0; j<3; j++){
-		printf("| %c ", char(49+l));
-		l++;
-	}
-	printf("|");
-	printf("\n");
+for( i = 0; i<9 && winner==0; i++){
+	
+        printf("\n\n");
+        printf(" %c | %c | %c\n", board[0][0], board[0][1], board[0][2]);
+printf("-----------\n");
+        printf(" %c | %c | %c\n", board[1][0], board[1][1], board[1][2]);
+printf("-----------\n");
+        printf(" %c | %c | %c\n", board[2][0], board[2][1], board[2][2]);
+        
+player = i%2 + 1; 
+if(player==1) printf("%s %c: ", message1,(player==1)?'X':'O');
+if(player==2) printf("%s ", message2);
+
+ /*do{
+printf("\nPlayer %d, please enter the number of the square "
+                   "where you want to place your %c: ", player,(player==1)?'X':'O');
+            scanf("%d", &go);
+            
+            row = --go/3;
+            column = go%3;
+        }
+        while(go<0 || go>9 || board[row][column]>'9');*/
+	
 }
-
-	if(whoStart==false) printf("\n\nComputer starts\n");
-	if(whoStart==true) printf("\n\nYou start\n");
-	
-	
 printf("\n\nPress any key to return to main menu...");
 getch();
 		*isGameActiveP=true;
@@ -123,7 +143,7 @@ void gameMenu(bool *isGameActiveP)
 		
 	    case '1':
 	    {
-	    	input(isGameActiveP);
+	    	mainGame(isGameActiveP);
 		    break;
 	    }
 	    
@@ -147,7 +167,6 @@ void gameMenu(bool *isGameActiveP)
 	   
 }
 }
-
 
 
 main()
