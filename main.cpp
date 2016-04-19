@@ -14,16 +14,6 @@ void title()
 
 
 
-/*void firstStepChoose(bool *whoStartP)
-{
-	int tmp;
-	srand(time(NULL));
-	tmp=rand()%2;
-	if(tmp==0) *whoStartP=false;
-	if(tmp==1) *whoStartP=true;
-}*/
-
-
 void mainGame(bool *isGameActiveP)
 {
 	system("cls");
@@ -41,8 +31,8 @@ char board[3][3] =
         {'4','5','6'},
         {'7','8','9'}
     };
-char message1[]="\nPlease enter the number of the square where you want to place your";
-char message2[]="\nComputer's step";
+char message1[]="\nPlease enter the number of the square where you want to place your: ";
+char message2[]="\nComputer went to: ";
 
 for( i = 0; i<9 && winner==0; i++){
 	
@@ -57,15 +47,17 @@ player = i%2 + 1;
 
  do{
 if(player==1) printf("%s %c: ", message1,(player==1)?'X':'O');
-if(player==2) printf("%s ", message2);
 
 if(player==1) scanf("%d", &go);
 if(player==2) go=rand()%9+1;
 
             row = --go/3;
             column = go%3;
-        }
-        while(go<0 || go>9 || board[row][column]>'9');
+            
+        if(player==2 && go>0 && go<=9&&(board[row][column]!='X'&&board[row][column]!='O')) 
+		printf("%s %d", message2, go+1);
+		}
+        while(go<0 || go>9 || board[row][column]=='X'||board[row][column]=='O');
         
          board[row][column] = (player == 1) ? 'X' : 'O';
         
@@ -92,7 +84,6 @@ printf("-----------\n");
 		if(winner==1) printf("\nYou won!");
     	if(winner==2) printf("\nComputer won!");
 }
-
 
 printf("\n\nPress any key to return to main menu...");
 getch();
@@ -131,8 +122,7 @@ for(int i=0; i<3; i++){
 	printf("|");
 	printf("\n");
 }
-		printf("\nIf you both can't cross entire field, game is draw.");
-		
+		printf("\nIf you both can't cross entire field, game is draw.");	
 printf("\n\nPress any key to return to main menu...");
 getch();
 *isGameActiveP = true;
@@ -146,9 +136,8 @@ void about(bool *isGameActiveP)
 	printf("The game was developed for programming coursework.\n");
 	printf("\nCreated by Ilya Konnov.\n");
 	printf("For more information check out my github profile: \nhttps://github.com/konnov-007");	
-	
-	printf("\n\nPress any key to return to main menu...");
-	getch();
+printf("\n\nPress any key to return to main menu...");
+getch();
 *isGameActiveP = true;	
 }
 
@@ -167,7 +156,6 @@ void gameMenu(bool *isGameActiveP)
 	
 	switch (inputChar)
 	{
-		
 	    case '1':
 	    {
 	    	mainGame(isGameActiveP);
@@ -190,8 +178,7 @@ void gameMenu(bool *isGameActiveP)
 	    {
 	    	*isGameActiveP=false;
 		    break;
-	    }
-	   
+	    }   
 }
 }
 
