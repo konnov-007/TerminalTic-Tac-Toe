@@ -54,13 +54,13 @@ if(player==2) go=rand()%9+1;
             row = --go/3;
             column = go%3;
             
-        if(player==2 && go>0 && go<=9&&(board[row][column]!='X'&&board[row][column]!='O')){
+        if(player==2 && go>=0 && go<=9&&(board[row][column]!='X'&&board[row][column]!='O')){
 		Sleep(800);
 		printf("\n%s %d", message2, go+1);
 		Sleep(800);
 	}
 		}
-        while(go<0 || go>9 || board[row][column]=='X'||board[row][column]=='O');
+        while(go<0 || go>=9 || board[row][column]=='X'||board[row][column]=='O');
         
          board[row][column] = (player == 1) ? 'X' : 'O';
         
