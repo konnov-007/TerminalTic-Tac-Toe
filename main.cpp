@@ -3,8 +3,9 @@
 #include <time.h>
 #include <Windows.h>
 
-char stepSaver[3][3];
+char stepSaver[3][3]={{1,2,3},{4,5,6},{7,8,9}};
 char stepTemp[3][3]={0};
+char symbol;
 
 void title()
 {
@@ -28,18 +29,18 @@ void firstStepChoose(bool *whoStartP)
 
 
 void arrayOutput(int tmp){
-
 int l=0, i, j;
 if(tmp==1&&stepSaver[0][0]!='X'&&stepSaver[0][0]!='O'){
 		for(i=0; i<3; i++){
 	for(j=0; j<3; j++){
 		 if(i==0&&j==0){
-	stepSaver[i][j]='X';
+	if (symbol=='X') stepSaver[i][j]='X';
+	if (symbol=='O') stepSaver[i][j]='O';
 	 printf("| %c ", stepSaver[i][j]); 
 	stepTemp[i][j]='X';
 	}
 		else {
-			if(stepTemp[i][j]=='X') printf("| X ");
+		    if(stepTemp[i][j]=='X') printf("| X ");
 		else if(stepTemp[i][j]=='O') printf("| O ");
 		else{
 	stepSaver[i][j]=(49+l);
@@ -54,11 +55,11 @@ if(tmp==1&&stepSaver[0][0]!='X'&&stepSaver[0][0]!='O'){
 		for(i=0; i<3; i++){
 	for(j=0; j<3; j++){
 		if(i==0&&j==1){
-	stepSaver[i][j]='X';
-	printf("| %c ", stepSaver[i][j]); 
+	if (symbol=='X') stepSaver[i][j]='X';
+	if (symbol=='O') stepSaver[i][j]='O';
+		printf("| %c ", stepSaver[i][j]); 
 	stepTemp[i][j]='X';
 	}
-		 
 		else if(stepTemp[i][j]=='X') printf("| X ");
 		else if(stepTemp[i][j]=='O') printf("| O ");
 		else {
@@ -73,11 +74,11 @@ if(tmp==1&&stepSaver[0][0]!='X'&&stepSaver[0][0]!='O'){
 		for(i=0; i<3; i++){
 	for(j=0; j<3; j++){
 		if(i==0&&j==2){
-	stepSaver[i][j]='X';
+		if (symbol=='X') stepSaver[i][j]='X';
+		if (symbol=='O') stepSaver[i][j]='O';
 	printf("| %c ", stepSaver[i][j]); 
 	stepTemp[i][j]='X';
-	}
-		
+	}		
 		else if(stepTemp[i][j]=='X') printf("| X ");
 		else if(stepTemp[i][j]=='O') printf("| O ");
 		else {
@@ -93,7 +94,8 @@ if(tmp==1&&stepSaver[0][0]!='X'&&stepSaver[0][0]!='O'){
 		for(i=0; i<3; i++){
 	for(j=0; j<3; j++){
 		if(i==1&&j==0){
-	stepSaver[i][j]='X';
+		if (symbol=='X') stepSaver[i][j]='X';
+		if (symbol=='O') stepSaver[i][j]='O';
 	printf("| %c ", stepSaver[i][j]); 
 	stepTemp[i][j]='X';
 	}
@@ -112,7 +114,8 @@ if(tmp==1&&stepSaver[0][0]!='X'&&stepSaver[0][0]!='O'){
 		for(i=0; i<3; i++){
 	for(j=0; j<3; j++){
 		if(i==1&&j==1){
-	stepSaver[i][j]='X';
+		if (symbol=='X') stepSaver[i][j]='X';
+		if (symbol=='O') stepSaver[i][j]='O';
 	printf("| %c ", stepSaver[i][j]); 
 	stepTemp[i][j]='X';
 	}
@@ -131,7 +134,8 @@ if(tmp==1&&stepSaver[0][0]!='X'&&stepSaver[0][0]!='O'){
 		for(i=0; i<3; i++){
 	for(j=0; j<3; j++){
 		if(i==1&&j==2){
-	stepSaver[i][j]='X';
+		if (symbol=='X') stepSaver[i][j]='X';
+		if (symbol=='O') stepSaver[i][j]='O';
 	printf("| %c ", stepSaver[i][j]); 
 	stepTemp[i][j]='X';
 	}
@@ -150,7 +154,8 @@ if(tmp==1&&stepSaver[0][0]!='X'&&stepSaver[0][0]!='O'){
 		for(i=0; i<3; i++){
 	for(j=0; j<3; j++){
 		if(i==2&&j==0){
-	stepSaver[i][j]='X';
+		if (symbol=='X') stepSaver[i][j]='X';
+		if (symbol=='O') stepSaver[i][j]='O';
 	printf("| %c ", stepSaver[i][j]); 
 	stepTemp[i][j]='X';
 	}
@@ -162,7 +167,6 @@ if(tmp==1&&stepSaver[0][0]!='X'&&stepSaver[0][0]!='O'){
 	}
 		l++; 
 	}
-	
 	printf("|"); printf("\n");
 	}l=0;
 	 }
@@ -171,7 +175,8 @@ if(tmp==1&&stepSaver[0][0]!='X'&&stepSaver[0][0]!='O'){
 		for(i=0; i<3; i++){
 	for(j=0; j<3; j++){
 		if(i==2&&j==1){
-	stepSaver[i][j]='X';
+		if (symbol=='X') stepSaver[i][j]='X';
+		if (symbol=='O') stepSaver[i][j]='O';
 	printf("| %c ", stepSaver[i][j]); 
 	stepTemp[i][j]='X';
 	}
@@ -190,7 +195,8 @@ if(tmp==1&&stepSaver[0][0]!='X'&&stepSaver[0][0]!='O'){
 		for(i=0; i<3; i++){
 	for(j=0; j<3; j++){
 		if(i==2&&j==2){
-	stepSaver[i][j]='X';
+		if (symbol=='X') stepSaver[i][j]='X';
+		if (symbol=='O') stepSaver[i][j]='O';
 	printf("| %c ", stepSaver[i][j]); 
 	stepTemp[i][j]='X';
 	}
@@ -208,13 +214,16 @@ if(tmp==1&&stepSaver[0][0]!='X'&&stepSaver[0][0]!='O'){
 
 
 
-void computerPlays()
+void computerPlays(bool* whoStartP)
 {		
 int rnd;
-	printf("\n\nComputer starts\n");
+if(*whoStartP==false){
+symbol='X';
+	printf("\n\nComputer's step \n");
 	Sleep(1300); system("cls");
 	rnd=rand()%9+1;
 arrayOutput(rnd);	
+}
 }
 
 
@@ -222,10 +231,24 @@ void playerPlays(bool* whoStartP)
 {
 int select;
 if(*whoStartP==false) do{
- printf("\n\nChoose number to put X: ");
+	symbol='O';
+ printf("\n\nChoose number to put O: ");
  scanf("%d", &select);
  if(select<1||select>9) printf("\n\nSelect number from 1 to 9:\n\n");
 }while(select<1||select>9);
+
+if(*whoStartP==true) do{
+	int l=0;
+for(int i=0; i<3; i++){
+	for(int j=0; j<3; j++){
+		printf("| %c ", char(49+l));
+	l++;}printf("|");printf("\n");	}
+	symbol='X';
+ printf("\n\nChoose number to put O: ");
+ scanf("%d", &select);
+ if(select<1||select>9) printf("\n\nSelect number from 1 to 9:\n\n");
+}while(select<1||select>9);
+
  system("cls");
  arrayOutput(select);
 	/*for(int i=0; i<3; i++){
@@ -244,8 +267,8 @@ void game(bool *isGameActiveP)
 	bool whoStart;
 	firstStepChoose(&whoStart);
 
-		if(whoStart==false) { computerPlays(); playerPlays(&whoStart); }
-	if(whoStart==true) printf("\n\nYou start\n");	
+		if(whoStart==false) { computerPlays(&whoStart); playerPlays(&whoStart); }
+	if(whoStart==true){	playerPlays(&whoStart); computerPlays(&whoStart); }	
 	int l=0;
  for(int i=0; i<3; i++){
 	for(int j=0; j<3; j++){
