@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <time.h>
-
+#include <Windows.h>
 void title()
 {
 	printf("XXXXX  X  XXXXX     XXXXX    X    XXXXX     XXXXX    X    XXXXX\n");
@@ -31,7 +31,7 @@ char board[3][3] =
         {'4','5','6'},
         {'7','8','9'}
     };
-char message1[]="\nPlease enter the number of the square where you want to place your: ";
+char message1[]="\nPlease input the number of the square where you want to place your: ";
 char message2[]="\nComputer went to: ";
 
 for( i = 0; i<9 && winner==0; i++){
@@ -54,8 +54,11 @@ if(player==2) go=rand()%9+1;
             row = --go/3;
             column = go%3;
             
-        if(player==2 && go>0 && go<=9&&(board[row][column]!='X'&&board[row][column]!='O')) 
-		printf("%s %d", message2, go+1);
+        if(player==2 && go>0 && go<=9&&(board[row][column]!='X'&&board[row][column]!='O')){
+		Sleep(800);
+		printf("\n%s %d", message2, go+1);
+		Sleep(800);
+	}
 		}
         while(go<0 || go>9 || board[row][column]=='X'||board[row][column]=='O');
         
@@ -102,26 +105,23 @@ printf("Crosses go first.\n");
 printf("Player wins if he makes up the right combination.\n");
 printf("\nThis is the game field:\n");	
 int l=0;
-for(int i=0; i<3; i++){
-	for(int j=0; j<3; j++){
-		printf("| %c ", char(49+l));
-		l++;
-	}
-	printf("|");
-	printf("\n");
-}
+printf("\n\n");
+        printf(" 1 | 2 | 3\n");
+printf("-----------\n");
+        printf(" 4 | 5 | 6\n");
+printf("-----------\n");
+        printf(" 7 | 8 | 9\n");
+
 printf("\nTo win you should cross numbers diagonally, vertically or horizontally.");
 printf("\n\nFor example, \"X\" player wins here:\n");
 l=0;
-for(int i=0; i<3; i++){
-	for(int j=0; j<3; j++){
-		if((i==0&&j==0)||(i==1&&j==1)||(i==2&&j==2)) printf("| X ");
-		else printf("| %c ", char(49+l));
-		l++;
-	}
-	printf("|");
-	printf("\n");
-}
+printf("\n");
+        printf(" X | 2 | 3\n");
+printf("-----------\n");
+        printf(" 4 | X | 6\n");
+printf("-----------\n");
+        printf(" 7 | 8 | X\n");
+
 		printf("\nIf you both can't cross entire field, game is draw.");	
 printf("\n\nPress any key to return to main menu...");
 getch();
