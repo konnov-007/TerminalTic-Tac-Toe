@@ -48,7 +48,20 @@ player = i%2 + 1;
  do{
 if(player==1) printf("%s %c: ", message1,(player==1)?'X':'O');
 
-if(player==1) scanf("%d", &go);
+if(player==1) {
+
+char inputChar[10]={0};
+int inputInt=0;
+int tempValue=0;
+
+while(tempValue==0){
+scanf("%s", &inputChar); 
+tempValue=atoi(inputChar); 
+if(tempValue!=0) go=atoi(inputChar); 
+else printf("%s %c: ", message1,(player==1)?'X':'O');
+}}
+
+
 if(player==2) go=rand()%9+1;
 
             row = --go/3;
