@@ -50,7 +50,7 @@ for( i = 0; i<9 && winner==0; i++){
 
 if(player==1) {
 	printf("%s %c: ", message1,(player==1)?'X':'O');
-	char inputChar[10]={0};
+	char inputChar[1000]={0};
 	int tempValue=0;
 
 while(tempValue==0){
