@@ -9,9 +9,9 @@ main()
 {
 	bool isGameActive;
 	
-do{
-	gameMenu(&isGameActive);
-}while(isGameActive==true);
+	do{
+		gameMenu(&isGameActive);
+	}while(isGameActive==true);
 
 	return 0;	
 }
