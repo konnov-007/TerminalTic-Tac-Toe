@@ -3,23 +3,27 @@
 #include <conio.h>
 #include <stdbool.h>
 
-char board[3][3] = 
+char field[3][3] = 
     {
         {'1','2','3'},
         {'4','5','6'},
         {'7','8','9'}
     };
-
+int go = 0;
 
 
 void hardDifficult(){
-	int i, j;
-	for(i=0; i<3; i++){
-		for(j=0; j<3; j++)
-		printf("%c", board[i][j]);
-	printf("\n");
+	int temp=0;
+	if(field[0][0]=='1' && field[0][1] == '2' && field[0][2] == '3'&&field[1][0]=='4' && field[1][1] == 'X' 
+	&& field[1][2] == '6' && field[2][0] == '7'&& field[2][1] == '8'&& field[2][2] == '9'){
+		temp = rand()%4+1;
+			if(temp == 1) go = 1;
+			if(temp == 2)  go = 3;
+			if(temp == 3) go = 7;
+			if(temp == 4) go = 9;
 	}
 }
+
 
 
 void mainGame(bool *isGameActiveP, char *inputCharP)
@@ -28,7 +32,6 @@ void mainGame(bool *isGameActiveP, char *inputCharP)
 	srand(time(NULL));
 	int i = 0, j=0;
 	int player = 0;
-	int go = 0;
 	int row = 0; 
 	int column = 0;
 	int line = 0;
@@ -39,11 +42,11 @@ void mainGame(bool *isGameActiveP, char *inputCharP)
 	for( i = 0; i<9 && winner==0; i++){
 	
     	printf("\n\n");
-    	printf(" %c | %c | %c\n", board[0][0], board[0][1], board[0][2]);
+    	printf(" %c | %c | %c\n", field[0][0], field[0][1], field[0][2]);
 		printf("-----------\n");
-    	printf(" %c | %c | %c\n", board[1][0], board[1][1], board[1][2]);
+    	printf(" %c | %c | %c\n", field[1][0], field[1][1], field[1][2]);
 		printf("-----------\n");
-    	printf(" %c | %c | %c\n", board[2][0], board[2][1], board[2][2]);
+    	printf(" %c | %c | %c\n", field[2][0], field[2][1], field[2][2]);
         
 		player = i%2 + 1; 
 
@@ -76,30 +79,30 @@ void mainGame(bool *isGameActiveP, char *inputCharP)
 			row = --go/3;
     		column = go%3;
             
-			if(player==2 && go>=0 && go<=9&&(board[row][column]!='X'&&board[row][column]!='O')){
+			if(player==2 && go>=0 && go<=9&&(field[row][column]!='X'&&field[row][column]!='O')){
 				Sleep(300);
 				printf("\n%s %d", message2, go+1);
 				Sleep(300);
 			}
-		}while(go<0 || go>=9 || board[row][column]=='X'||board[row][column]=='O');
+		}while(go<0 || go>=9 || field[row][column]=='X'||field[row][column]=='O');
         
-    board[row][column] = (player == 1) ? 'X' : 'O'; //put X or O to selected position
+    field[row][column] = (player == 1) ? 'X' : 'O'; //put X or O to selected position
         
-	if((board[0][0] == board[1][1] && board[0][0] == board[2][2]) ||
-    (board[0][2] == board[1][1] && board[0][2] == board[2][0]))
+	if((field[0][0] == field[1][1] && field[0][0] == field[2][2]) ||
+    (field[0][2] == field[1][1] && field[0][2] == field[2][0]))
    		winner = player;
 	else            
 		for(line = 0; line <= 2; line ++)     
-			if((board[line][0] == board[line][1] && board[line][0] == board[line][2])||
-			(board[0][line] == board[1][line] && board[0][line] == board[2][line]))
+			if((field[line][0] == field[line][1] && field[line][0] == field[line][2])||
+			(field[0][line] == field[1][line] && field[0][line] == field[2][line]))
 				winner = player;
 	}
 	printf("\n\n");
-    printf(" %c | %c | %c\n", board[0][0], board[0][1], board[0][2]);
+    printf(" %c | %c | %c\n", field[0][0], field[0][1], field[0][2]);
 	printf("-----------\n");
-    printf(" %c | %c | %c\n", board[1][0], board[1][1], board[1][2]);
+    printf(" %c | %c | %c\n", field[1][0], field[1][1], field[1][2]);
 	printf("-----------\n");
-    printf(" %c | %c | %c\n", board[2][0], board[2][1], board[2][2]);
+    printf(" %c | %c | %c\n", field[2][0], field[2][1], field[2][2]);
     
 	if(winner == 0)
     	printf("\nDraw\n");
@@ -110,15 +113,15 @@ void mainGame(bool *isGameActiveP, char *inputCharP)
 			printf("\nComputer won!");
 	}
 	
-	//return source board
+	//return source matrix
 	line = 49;
 	for(i=0; i<3; i++){
 		for(j=0; j<3; j++){
-			board[i][j]=line;
+			field[i][j]=line;
 			line++;
 		}
 	}
-	
+	go=0;
 	printf("\n\nPress any key to return to main menu...");
 	getch();
 	*isGameActiveP=true;
