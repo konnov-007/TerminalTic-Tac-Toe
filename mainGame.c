@@ -2,23 +2,37 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <stdbool.h>
-void mainGame(bool *isGameActiveP)
+
+char board[3][3] = 
+    {
+        {'1','2','3'},
+        {'4','5','6'},
+        {'7','8','9'}
+    };
+
+
+
+void hardDifficult(){
+	int i, j;
+	for(i=0; i<3; i++){
+		for(j=0; j<3; j++)
+		printf("%c", board[i][j]);
+	printf("\n");
+	}
+}
+
+
+void mainGame(bool *isGameActiveP, char *inputCharP)
 {
 	system("cls");
 	srand(time(NULL));
-	int i = 0;
+	int i = 0, j=0;
 	int player = 0;
 	int go = 0;
 	int row = 0; 
 	int column = 0;
 	int line = 0;
 	int winner = 0;
-	char board[3][3] = 
-    {
-        {'1','2','3'},
-        {'4','5','6'},
-        {'7','8','9'}
-    };
 	char message1[]="\nPlease input the number of the square where you want to place your: ";
 	char message2[]="\nComputer went to: ";
 
@@ -52,20 +66,24 @@ void mainGame(bool *isGameActiveP)
 			}
 
 
-			if(player==2) 
-				go=rand()%9+1;
+			if(player==2){
+				if(*inputCharP=='1')	
+					go=rand()%9+1;
+				if(*inputCharP=='2')
+					hardDifficult();
+    		}
     		
 			row = --go/3;
     		column = go%3;
             
 			if(player==2 && go>=0 && go<=9&&(board[row][column]!='X'&&board[row][column]!='O')){
-				Sleep(800);
+				Sleep(300);
 				printf("\n%s %d", message2, go+1);
-				Sleep(800);
+				Sleep(300);
 			}
 		}while(go<0 || go>=9 || board[row][column]=='X'||board[row][column]=='O');
         
-    board[row][column] = (player == 1) ? 'X' : 'O';
+    board[row][column] = (player == 1) ? 'X' : 'O'; //put X or O to selected position
         
 	if((board[0][0] == board[1][1] && board[0][0] == board[2][2]) ||
     (board[0][2] == board[1][1] && board[0][2] == board[2][0]))
@@ -91,6 +109,16 @@ void mainGame(bool *isGameActiveP)
 		if(winner==2) 
 			printf("\nComputer won!");
 	}
+	
+	//return source board
+	line = 49;
+	for(i=0; i<3; i++){
+		for(j=0; j<3; j++){
+			board[i][j]=line;
+			line++;
+		}
+	}
+	
 	printf("\n\nPress any key to return to main menu...");
 	getch();
 	*isGameActiveP=true;

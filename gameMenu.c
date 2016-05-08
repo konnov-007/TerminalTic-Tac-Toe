@@ -22,7 +22,13 @@ void gameMenu(bool *isGameActiveP)
 	{
 		case '1':
 		{
-	    	mainGame(isGameActiveP);
+			system("cls");
+			do{
+				printf("\nSelect difficult:\n1)Easy\n2)Hard\n");
+				inputChar = _getch();
+			}while((inputChar!='1')&&(inputChar!='2'));
+			system("cls");
+			mainGame(isGameActiveP, &inputChar);
 			break;
 		}
 	    
