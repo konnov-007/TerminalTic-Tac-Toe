@@ -14,8 +14,53 @@ int go = 0;
 
 void hardDifficult(){
 	int temp=0;
+	//algorythms to win diagonally
+	if(field[0][0] == 'O' && field[1][1] == 'O' && field[2][2] == '9')
+		go = 9;
+	else if(field[1][1] == 'O' && field[2][2] == 'O' && field[0][0] == '1')
+		go = 1;
+	//if(field[0][0] == 'O' && field[2][2] == 'O') can't be on practice
+		//go = 5;
+	else if(field[0][2] == 'O' && field[1][1] == 'O' && field[2][0] == '7')
+		go = 7;
+	else if(field[2][0] == 'O' && field[1][1] == 'O' && field[0][2] == '3')
+		go = 3;
+	//algorythms to win vertically 
+	else if(field[0][0] == 'O' && field[1][0] == 'O' && field[2][0] == '7')
+		go = 7;
+	else if(field[2][0] == 'O' && field[1][0] == 'O' && field[0][0] == '1')
+		go = 1;
+	else if(field[0][0] == 'O' && field[2][0] == 'O' && field[1][0] == '4')
+		go = 4;
+	else if(field[0][1] == 'O' && field[1][1] == 'O' && field[2][1] == '8')
+		go = 8;
+	else if(field[1][1] == 'O' && field [2][1] == 'O' && field[0][1] == '2')
+		go = 2;
+	else if(field[0][2] == 'O' && field [1][2] == 'O' && field[2][2] == '9')
+		go = 9;
+	else if(field[1][2] == 'O' && field [2][2] == 'O' && field[0][2] == '3')
+		go = 3;
+	else if(field[0][2] == 'O' && field [2][2] == 'O' && field[1][2] == '6')
+		go = 6;
+	//algorythms to win horyzontally
+	else if(field[0][0] == 'O' && field[0][1] == 'O' && field[0][2] == '3')
+		go = 3;
+	else if(field[0][1] == 'O' && field[0][2] == 'O' && field[0][0] == '1')
+		go = 1;
+	else if(field[0][0] == 'O' && field[0][2] == 'O' && field[0][1] == '2')
+		go = 2;
+	else if(field[1][0] == 'O' && field[1][1] == 'O' && field[1][2] == '6')
+		go = 6;
+	else if(field[1][1] == 'O' && field[1][2] == 'O' && field[1][0] == '4')
+		go = 4;
+	else if(field[2][0] == 'O' && field[2][1] == 'O' && field[2][2] == '9')
+		go = 9;
+	else if(field[2][1] == 'O' && field[2][2] == 'O' && field[2][0] == '7')
+		go = 7;
+	else if(field[2][0] == 'O' && field[2][2] == 'O' && field[2][1] == '8')
+		go = 8;
 	//if at first step player put 'X' to 5:
-	if(field[0][0]=='1' && field[0][1] == '2' && field[0][2] == '3'&&field[1][0]=='4' && 
+	else if(field[0][0]=='1' && field[0][1] == '2' && field[0][2] == '3'&&field[1][0]=='4' && 
 	(field[1][1] == 'X' || field[1][1] == 'O')&& field[1][2] == '6' && field[2][0] == '7'&& 
 	field[2][1] == '8'&& field[2][2] == '9'){
 		temp = rand()%4+1;
@@ -23,41 +68,62 @@ void hardDifficult(){
 			if(temp == 2)  go = 3;
 			if(temp == 3) go = 7;
 			if(temp == 4) go = 9;
-	}//if at first step player put 'X' to 1 or 2 or 3 or 4 or 6 or 7 or 8 or 9
-	if((field [1][1] == '5' && (field[0][1] == 'X'|| field[1][0] == 'X' || field[1][2] == 'X' || 
+	}
+		//algorythms to defend diagonally
+	else if(field[0][0] == 'X' && field[1][1] == 'X' && field[2][2] == '9')
+		go = 9;
+	else if(field[1][1] == 'X' && field[2][2] == 'X' && field[0][0] == '1')
+		go = 1;
+
+	else if(field[0][2] == 'X' && field[1][1] == 'X' && field[2][0] == '7')
+		go = 7;
+	else if(field[2][0] == 'X' && field[1][1] == 'X' && field[0][2] == '3')
+		go = 3;
+	//algorythms to defend vertically 
+	else if(field[0][0] == 'X' && field[1][0] == 'X' && field[2][0] == '7')
+		go = 7;
+	else if(field[2][0] == 'X' && field[1][0] == 'X' && field[0][0] == '1')
+		go = 1;
+	else if(field[0][0] == 'X' && field[2][0] == 'X' && field[1][0] == '4')
+		go = 4;
+	else if(field[0][1] == 'X' && field[1][1] == 'X' && field[2][1] == '8')
+		go = 8;
+	else if(field[1][1] == 'X' && field [2][1] == 'X' && field[0][1] == '2')
+		go = 2;
+	//else if(field[0][1] == 'X' && field[2][1] == 'X' && field[1][1] == '5') can't be in practice
+	//	go = 5;
+	else if(field[0][2] == 'X' && field [1][2] == 'X' && field[2][2] == '9')
+		go = 9;
+	else if(field[1][2] == 'X' && field [2][2] == 'X' && field[0][2] == '3')
+		go = 3;
+	else if(field[0][2] == 'X' && field [2][2] == 'X' && field[1][2] == '6')
+		go = 6;
+	//algorythms to defend horyzontally
+	else if(field[0][0] == 'X' && field[0][1] == 'X' && field[0][2] == '3')
+		go = 3;
+	else if(field[0][1] == 'X' && field[0][2] == 'X' && field[0][0] == '1')
+		go = 1;
+	else if(field[0][0] == 'X' && field[0][2] == 'X' && field[0][1] == '2')
+		go = 2;
+	else if(field[1][0] == 'X' && field[1][1] == 'X' && field[1][2] == '6')
+		go = 6;
+	else if(field[1][1] == 'X' && field[1][2] == 'X' && field[1][0] == '4')
+		go = 4;
+	else if(field[2][0] == 'X' && field[2][1] == 'X' && field[2][2] == '9')
+		go = 9;
+	else if(field[2][1] == 'X' && field[2][2] == 'X' && field[2][0] == '7')
+		go = 7;
+	else if(field[2][0] == 'X' && field[2][2] == 'X' && field[2][1] == '8')
+		go = 8;
+	
+	//if at first step player put 'X' to 1 or 2 or 3 or 4 or 6 or 7 or 8 or 9
+	else if((field[1][1] == '5' && (field[0][1] == 'X'|| field[1][0] == 'X' || field[1][2] == 'X' || 
 	field[2][1] == 'X') && field[0][0] == '1' && field[0][2] == '3' && field[2][0] == '7' && 
 	field[2][2] == '9')||((field[0][0] == 'X'|| field[0][2] == 'X' || field[2][0] == 'X' || 
 	field[2][2] == 'X') && field[0][1] == '2' && field[1][0] == '4' && field[1][2] == '6' && 
 	field[2][1] == '8'))
 		go = 5;
-	//if O on 5th position and X at 1st position
-	if(field[0][0]=='X' && field[0][1] == '2' && field[0][2] == '3'&&field[1][0]=='4' && 
-	(field[1][1] == 'O')&& field[1][2] == '6' && field[2][0] == '7'&& 
-	field[2][1] == '8'&& field[2][2] == '9'){
-		temp = rand()%3+1;
-			if(temp == 1) go = 3;
-			if(temp == 2) go = 7;
-			if(temp == 3) go = 9;
-	}//if player try to win by putting X to 1st and 3rd position when O on 5th position
-	if((field[0][0] == 'X' || field[0][0] == 'O') && field[0][1] == '2' && (field[0][2] == 'X' || 
-	field[0][2] == 'O') && field[1][0]=='4' && field[1][1] == 'O' && field[1][2] == '6' && 
-	field[2][0] == '7' && field[2][1] == '8'&& field[2][2] == '9')
-		go = 2;
-	//if player try to win by putting X to 7th and 9th position when O on 5th position
-	if(field[0][0] == '1' && field[0][1] == '2' && field[0][2] == '3' && field[1][0]=='4' && 
-	field[1][1] == 'O' && field[1][2] == '6' && (field[2][0] == 'X' || field[2][0] == 'O') && 
-	field[2][1] == '8'&& (field[2][2] == 'X' || field[2][2] == 'O'))
-		go = 8;
-	//if player try to win by putting X to 1st and 7th position when O on 5th position
-	if((field[0][0] == 'X' || field[0][0] == 'O') && field[0][1] == '2' && field[0][2] == '3' && field[1][0]=='4' && 
-	field[1][1] == 'O' && field[1][2] == '6' && (field[2][0] == 'X' || field[2][0] == 'O') && 
-	field[2][1] == '8'&& field[2][2] == '9')
-		go = 4;
-	//if player try to win by putting X to 3rd and 9th position when O on 5th position
-	if(field[0][0] == '1' && field[0][1] == '2' && (field[0][2] == 'X' || field[0][2] == 'O') && 
-	field[1][0]=='4' && field[1][1] == 'O' && field[1][2] == '6' && field[2][0] == '7' && 
-	field[2][1] == '8'&& (field[2][2] == 'X' || field[2][2] == 'O'))
-		go = 6;
+
 }
 
 
