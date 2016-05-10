@@ -14,8 +14,11 @@ int go = 0;
 
 void hardDifficult(){
 	int temp=0;
-	//algorythms to win diagonally
-	if(field[0][0] == 'O' && field[1][1] == 'O' && field[2][2] == '9')
+	//if at first step player put 'X' to 1 or 2 or 3 or 4 or 6 or 7 or 8 or 9
+	if(field[1][1] == '5')
+		go = 5;
+	//algorithm to win diagonally
+	else if(field[0][0] == 'O' && field[1][1] == 'O' && field[2][2] == '9')
 		go = 9;
 	else if(field[1][1] == 'O' && field[2][2] == 'O' && field[0][0] == '1')
 		go = 1;
@@ -25,7 +28,7 @@ void hardDifficult(){
 		go = 7;
 	else if(field[2][0] == 'O' && field[1][1] == 'O' && field[0][2] == '3')
 		go = 3;
-	//algorythms to win vertically 
+	//algorithm to win vertically 
 	else if(field[0][0] == 'O' && field[1][0] == 'O' && field[2][0] == '7')
 		go = 7;
 	else if(field[2][0] == 'O' && field[1][0] == 'O' && field[0][0] == '1')
@@ -42,7 +45,7 @@ void hardDifficult(){
 		go = 3;
 	else if(field[0][2] == 'O' && field [2][2] == 'O' && field[1][2] == '6')
 		go = 6;
-	//algorythms to win horyzontally
+	//algorithm to win horyzontally
 	else if(field[0][0] == 'O' && field[0][1] == 'O' && field[0][2] == '3')
 		go = 3;
 	else if(field[0][1] == 'O' && field[0][2] == 'O' && field[0][0] == '1')
@@ -69,17 +72,16 @@ void hardDifficult(){
 			if(temp == 3) go = 7;
 			if(temp == 4) go = 9;
 	}
-		//algorythms to defend diagonally
+		//algorithm to defend diagonally
 	else if(field[0][0] == 'X' && field[1][1] == 'X' && field[2][2] == '9')
 		go = 9;
 	else if(field[1][1] == 'X' && field[2][2] == 'X' && field[0][0] == '1')
 		go = 1;
-
 	else if(field[0][2] == 'X' && field[1][1] == 'X' && field[2][0] == '7')
 		go = 7;
 	else if(field[2][0] == 'X' && field[1][1] == 'X' && field[0][2] == '3')
 		go = 3;
-	//algorythms to defend vertically 
+	//algorithm to defend vertically 
 	else if(field[0][0] == 'X' && field[1][0] == 'X' && field[2][0] == '7')
 		go = 7;
 	else if(field[2][0] == 'X' && field[1][0] == 'X' && field[0][0] == '1')
@@ -98,7 +100,7 @@ void hardDifficult(){
 		go = 3;
 	else if(field[0][2] == 'X' && field [2][2] == 'X' && field[1][2] == '6')
 		go = 6;
-	//algorythms to defend horyzontally
+	//algorithm to defend horyzontally
 	else if(field[0][0] == 'X' && field[0][1] == 'X' && field[0][2] == '3')
 		go = 3;
 	else if(field[0][1] == 'X' && field[0][2] == 'X' && field[0][0] == '1')
@@ -115,15 +117,28 @@ void hardDifficult(){
 		go = 7;
 	else if(field[2][0] == 'X' && field[2][2] == 'X' && field[2][1] == '8')
 		go = 8;
-	
-	//if at first step player put 'X' to 1 or 2 or 3 or 4 or 6 or 7 or 8 or 9
-	else if((field[1][1] == '5' && (field[0][1] == 'X'|| field[1][0] == 'X' || field[1][2] == 'X' || 
-	field[2][1] == 'X') && field[0][0] == '1' && field[0][2] == '3' && field[2][0] == '7' && 
-	field[2][2] == '9')||((field[0][0] == 'X'|| field[0][2] == 'X' || field[2][0] == 'X' || 
-	field[2][2] == 'X') && field[0][1] == '2' && field[1][0] == '4' && field[1][2] == '6' && 
-	field[2][1] == '8'))
-		go = 5;
-
+	//algorithm to stepping rationally horizontally
+	else if(field[0][0] == 'O' && field[0][1] == '2' && field[0][2] == '3')
+		go = 3;
+	else if(field[0][0] == '1' && field[0][1] == '2' && field[0][2] == 'X')
+		go = 1;
+	else if(field[2][0] == 'O' && field[2][1] == '8' && field[2][2] == '9')
+		go = 9; 
+	else if(field[2][0] == '7' && field[2][1] == '8' && field[2][2] == 'O')
+		go = 7;
+	//algorithm to stepping rationally vertically
+	else if(field[0][0] == 'O' && field[1][0] == '4' && field[2][0] == '7')
+		go = 7;
+	else if(field[0][0] == '1' && field[1][0] == '4' && field[2][0] == 'O')
+		go = 1;
+	else if(field[0][2] == 'O' && field[1][2] == '6' && field[2][2] == '9')
+		go = 9;
+	else if(field[0][2] == '3' && field[1][2] == '6' && field[2][2] == 'O')
+		go = 3;
+	else
+		go = rand()%9+1;
+//	printf("go = %d", go);
+//	getch();
 }
 
 
@@ -209,8 +224,11 @@ void mainGame(bool *isGameActiveP, char *inputCharP)
 	if(winner == 0)
     	printf("\nDraw\n");
 	else{
-		if(winner==1) 
+		if(winner==1){
+			if(*inputCharP=='2')
+				printf("\nIt's impossible!");
 			printf("\nYou won!");
+		}
 		if(winner==2) 
 			printf("\nComputer won!");
 	}
