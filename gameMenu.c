@@ -24,9 +24,9 @@ void gameMenu(bool *isGameActiveP)
 		{
 			system("cls");
 			do{
-				printf("\nSelect difficult:\n1)Easy\n2)Hard\n");
+				printf("\nSelect difficult:\n1)Easy\n2)Medium\n3)Hard\n");
 				inputChar = _getch();
-			}while((inputChar!='1')&&(inputChar!='2'));
+			}while((inputChar!='1')&&(inputChar!='2')&&(inputChar!='3'));
 			system("cls");
 			mainGame(isGameActiveP, &inputChar);
 			break;

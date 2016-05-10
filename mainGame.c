@@ -22,8 +22,6 @@ void hardDifficult(){
 		go = 9;
 	else if(field[1][1] == 'O' && field[2][2] == 'O' && field[0][0] == '1')
 		go = 1;
-	//if(field[0][0] == 'O' && field[2][2] == 'O') can't be on practice
-		//go = 5;
 	else if(field[0][2] == 'O' && field[1][1] == 'O' && field[2][0] == '7')
 		go = 7;
 	else if(field[2][0] == 'O' && field[1][1] == 'O' && field[0][2] == '3')
@@ -92,8 +90,6 @@ void hardDifficult(){
 		go = 8;
 	else if(field[1][1] == 'X' && field [2][1] == 'X' && field[0][1] == '2')
 		go = 2;
-	//else if(field[0][1] == 'X' && field[2][1] == 'X' && field[1][1] == '5') can't be in practice
-	//	go = 5;
 	else if(field[0][2] == 'X' && field [1][2] == 'X' && field[2][2] == '9')
 		go = 9;
 	else if(field[1][2] == 'X' && field [2][2] == 'X' && field[0][2] == '3')
@@ -137,9 +133,203 @@ void hardDifficult(){
 		go = 3;
 	else
 		go = rand()%9+1;
-//	printf("go = %d", go);
-//	getch();
 }
+
+
+
+
+void mediumDifficult(){
+	int temp=0;
+	//algorithm to win diagonally 
+	if(field[0][0] == 'O' && field[1][1] == 'O' && field[2][2] == '9')
+		go = 9;
+	else if(field[1][1] == 'O' && field[2][2] == 'O' && field[0][0] == '1')
+		go = 1;
+	else if(field[0][0] == 'O' && field[2][2] == 'O' && field[1][1] == '5')
+		go = 5;
+	else if(field[0][2] == 'O' && field[1][1] == 'O' && field[2][0] == '7')
+		go = 7;
+	else if(field[2][0] == 'O' && field[1][1] == 'O' && field[0][2] == '3')
+		go = 3;
+	else if(field[2][0] == 'O' && field[1][1] == '5' && field[0][2] == 'O')
+		go = 5;
+	//algorithm to win vertically 
+	else if(field[0][0] == 'O' && field[1][0] == 'O' && field[2][0] == '7')
+		go = 7;
+	else if(field[2][0] == 'O' && field[1][0] == 'O' && field[0][0] == '1')
+		go = 1;
+	else if(field[0][0] == 'O' && field[2][0] == 'O' && field[1][0] == '4')
+		go = 4;
+	else if(field[0][1] == 'O' && field[1][1] == 'O' && field[2][1] == '8')
+		go = 8;
+	else if(field[1][1] == 'O' && field [2][1] == 'O' && field[0][1] == '2')
+		go = 2;
+	else if(field[0][1] == 'O' && field [1][1] == '5' && field[2][1] == 'O')
+		go = 5;
+	else if(field[0][2] == 'O' && field [1][2] == 'O' && field[2][2] == '9')
+		go = 9;
+	else if(field[1][2] == 'O' && field [2][2] == 'O' && field[0][2] == '3')
+		go = 3;
+	else if(field[0][2] == 'O' && field [2][2] == 'O' && field[1][2] == '6')
+		go = 6;
+	//algorithm to win horyzontally
+	else if(field[0][0] == 'O' && field[0][1] == 'O' && field[0][2] == '3')
+		go = 3;
+	else if(field[0][1] == 'O' && field[0][2] == 'O' && field[0][0] == '1')
+		go = 1;
+	else if(field[0][0] == 'O' && field[0][2] == 'O' && field[0][1] == '2')
+		go = 2;
+	else if(field[1][0] == 'O' && field[1][1] == 'O' && field[1][2] == '6')
+		go = 6;
+	else if(field[1][1] == 'O' && field[1][2] == 'O' && field[1][0] == '4')
+		go = 4;
+	else if(field[1][0] == 'O' && field[1][2] == 'O' && field[1][1] == '5')
+		go = 5;
+	else if(field[2][0] == 'O' && field[2][1] == 'O' && field[2][2] == '9')
+		go = 9;
+	else if(field[2][1] == 'O' && field[2][2] == 'O' && field[2][0] == '7')
+		go = 7;
+	else if(field[2][0] == 'O' && field[2][2] == 'O' && field[2][1] == '8')
+		go = 8;
+		//algorithm to defend diagonally
+	else if(field[0][0] == 'X' && field[1][1] == 'X' && field[2][2] == '9')
+		go = 9;
+	else if(field[1][1] == 'X' && field[2][2] == 'X' && field[0][0] == '1')
+		go = 1;
+	else if(field[0][0] == 'X' && field[2][2] == 'X' && field[1][1] == '5')
+		go = 5;
+	else if(field[0][2] == 'X' && field[1][1] == 'X' && field[2][0] == '7')
+		go = 7;
+	else if(field[2][0] == 'X' && field[1][1] == 'X' && field[0][2] == '3')
+		go = 3;
+	else if(field[2][0] == 'X'&& field[0][2] == 'X' && field[1][1] == '5' )
+		go = 5;
+	//algorithm to defend vertically 
+	else if(field[0][0] == 'X' && field[1][0] == 'X' && field[2][0] == '7')
+		go = 7;
+	else if(field[2][0] == 'X' && field[1][0] == 'X' && field[0][0] == '1')
+		go = 1;
+	else if(field[0][0] == 'X' && field[2][0] == 'X' && field[1][0] == '4')
+		go = 4;
+	else if(field[0][1] == 'X' && field[1][1] == 'X' && field[2][1] == '8')
+		go = 8;
+	else if(field[1][1] == 'X' && field [2][1] == 'X' && field[0][1] == '2')
+		go = 2;
+	else if(field[0][1] == 'X' && field[2][1] == 'X' && field[1][1] == '5') 
+		go = 5;
+	else if(field[0][2] == 'X' && field [1][2] == 'X' && field[2][2] == '9')
+		go = 9;
+	else if(field[1][2] == 'X' && field [2][2] == 'X' && field[0][2] == '3')
+		go = 3;
+	else if(field[0][2] == 'X' && field [2][2] == 'X' && field[1][2] == '6')
+		go = 6;
+	//algorithm to defend horyzontally
+	else if(field[0][0] == 'X' && field[0][1] == 'X' && field[0][2] == '3')
+		go = 3;
+	else if(field[0][1] == 'X' && field[0][2] == 'X' && field[0][0] == '1')
+		go = 1;
+	else if(field[0][0] == 'X' && field[0][2] == 'X' && field[0][1] == '2')
+		go = 2;
+	else if(field[1][0] == 'X' && field[1][1] == 'X' && field[1][2] == '6')
+		go = 6;
+	else if(field[1][1] == 'X' && field[1][2] == 'X' && field[1][0] == '4')
+		go = 4;
+	else if(field[1][0] == 'X' && field[1][2] == 'X' && field[1][1] == '5')
+		go = 5;
+	else if(field[2][0] == 'X' && field[2][1] == 'X' && field[2][2] == '9')
+		go = 9;
+	else if(field[2][1] == 'X' && field[2][2] == 'X' && field[2][0] == '7')
+		go = 7;
+	else if(field[2][0] == 'X' && field[2][2] == 'X' && field[2][1] == '8')
+		go = 8;
+	//algorithm to stepping rationally diagonally
+	else if(field[0][0] == 'X' && field[1][1] == '5' && field[2][2] == '9'){
+		temp = rand()%2+1;
+		if(temp == 1) go = 9;
+		if(temp == 2) go = 5;
+	}
+	else if(field[1][1] == '5' && field[2][2] == 'X' && field[0][0] == '1'){
+		temp = rand()%2+1;
+		if(temp == 1) go = 1;
+		if(temp == 2) go = 5;
+	}
+	else if(field[0][2] == 'X' && field[1][1] == '5' && field[2][0] == '7'){
+		temp = rand()%2+1;
+		if(temp == 1) go = 5;
+		if(temp == 2) go = 7;
+	}
+	else if(field[2][0] == 'X' && field[1][1] == '5' && field[0][2] == '3'){
+		temp = rand()%2+1;
+		if(temp == 1) go = 3;
+		if(temp == 2) go = 5;
+	}
+	//algorithm to stepping rationally horizontally
+	else if(field[0][0] == 'O' && field[0][1] == '2' && field[0][2] == '3'){
+		temp = rand()%2+1;
+		if(temp == 1) go = 3;
+		if(temp == 2) go = 2;
+	}
+	else if(field[0][0] == '1' && field[0][1] == '2' && field[0][2] == 'X'){
+		temp = rand()%2+1;
+		if(temp == 1) go = 1;
+		if(temp == 2) go = 2;
+	}
+	else if(field[1][0] == 'O' && field[1][1] == '5' && field[1][2] == '6'){
+		temp = rand()%2+1;
+		if(temp == 1) go = 5;
+		if(temp == 2) go = 6;
+	} 
+	else if(field[1][0] == '4' && field[1][1] == '5' && field[1][2] == 'O'){
+		temp = rand()%2+1;
+		if(temp == 1) go = 4;
+		if(temp == 2) go = 5;
+	}
+	else if(field[2][0] == 'O' && field[2][1] == '8' && field[2][2] == '9'){
+		temp = rand()%2+1;
+		if(temp == 1) go = 8;
+		if(temp == 2) go = 9;
+	} 
+	else if(field[2][0] == '7' && field[2][1] == '8' && field[2][2] == 'O'){
+		temp = rand()%2+1;
+		if(temp == 1) go = 7;
+		if(temp == 2) go = 8;
+	}
+	//algorithm to stepping rationally vertically
+	else if(field[0][0] == 'O' && field[1][0] == '4' && field[2][0] == '7'){
+		temp = rand()%2+1;
+		if(temp == 1) go = 4;
+		if(temp == 2) go = 7;
+	}
+	else if(field[0][0] == '1' && field[1][0] == '4' && field[2][0] == 'O'){
+		temp = rand()%2+1;
+		if(temp == 1) go = 1;
+		if(temp == 2) go = 4;
+	}
+	else if(field[0][1] == 'O' && field[1][1] == '5' && field[2][1] == '8'){
+		temp = rand()%2+1;
+		if(temp == 1) go = 5;
+		if(temp == 2) go = 8;
+	}
+	else if(field[0][1] == '2' && field[1][1] == '5' && field[2][1] == 'O'){
+		temp = rand()%2+1;
+		if(temp == 1) go = 2;
+		if(temp == 2) go = 5;
+	}
+	else if(field[0][2] == 'O' && field[1][2] == '6' && field[2][2] == '9'){
+		temp = rand()%2+1;
+		if(temp == 1) go = 6;
+		if(temp == 2) go = 9;
+	}
+	else if(field[0][2] == '3' && field[1][2] == '6' && field[2][2] == 'O'){
+		temp = rand()%2+1;
+		if(temp == 1) go = 3;
+		if(temp == 2) go = 6;
+	}
+	else
+		go = rand()%9+1;
+}
+
+
 
 
 
@@ -190,6 +380,8 @@ void mainGame(bool *isGameActiveP, char *inputCharP)
 				if(*inputCharP=='1')	
 					go=rand()%9+1;
 				if(*inputCharP=='2')
+					mediumDifficult();
+				if(*inputCharP=='3')
 					hardDifficult();
     		}
     		
@@ -225,7 +417,7 @@ void mainGame(bool *isGameActiveP, char *inputCharP)
     	printf("\nDraw\n");
 	else{
 		if(winner==1){
-			if(*inputCharP=='2')
+			if(*inputCharP=='3')
 				printf("\nIt's impossible!");
 			printf("\nYou won!");
 		}
