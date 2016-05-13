@@ -365,8 +365,8 @@ void mainGame(bool *isGameActiveP, char *inputCharP)
 				int tempValue=0;
 
 				while(tempValue==0){
-					char inputChar[1000]={'\0'};
-					scanf("%s", &inputChar); 
+					char inputChar[1000];
+					gets(inputChar); 
 					tempValue=atoi(inputChar); 
 					if(tempValue!=0)
 						go=atoi(inputChar); 
